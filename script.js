@@ -9,6 +9,8 @@ let board = [
 	["_","_","_"],
  ];
 
+const resetButton = document.querySelector('#reset');
+
 const getCellPlacement = (index,numberOfRows)=>{
 	const row = Math.floor(index / numberOfRows);
 	const col = index % numberOfRows;
@@ -88,5 +90,7 @@ const createBoard = ()=>{
 	}
 container.insertAdjacentElement('afterbegin',board);
 }
+
+resetButton.addEventListener('click',resetBoard);
 
 createBoard();
