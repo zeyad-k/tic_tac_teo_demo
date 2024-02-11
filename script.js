@@ -37,10 +37,8 @@ const [row,col] = getCellPlacement(index,NUMBER_OF_ROWS);
 if (board[row][col] === "_"){
 	turnsCounter++;
 	board[row][col] = currentPlayer;
-	cell.querySelector(".value").textContent = currentPlayer;
-	cell.classList.add(`cell--${currentPlayer}`);
-	
-	// drawMarkInCell(cell,currentPlayer);
+ 	
+	drawMarkInCell(cell,currentPlayer);
 
 	if (checkWin()) {
 		runWinEvent();
