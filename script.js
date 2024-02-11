@@ -37,7 +37,6 @@ const checkColumns = (currentPlayer) => {
 	}
 	
 };
-
 const checkRows = (currentPlayer) => {
 	let column = 0;
 
@@ -56,18 +55,35 @@ const checkRows = (currentPlayer) => {
 		}
 	}
 };
-const checkDiagonals = () => false;
+
+const checkDiagonals = () => {
+	let count = 0;
+
+  		while (count < NUMBER_OF_ROWS) {
+			if (board[count][count] !== currentPlayer) {
+				count = 0;
+				break;
+			}
+			count++;
+		}
+
+		if (count === NUMBER_OF_ROWS) {
+			return true;
+			
+		}
+};
 const checkReverseDiagonals = () => false;
 
 const checkWin = (currentPlayer) => {
 	if (checkRows(currentPlayer)) {
 		return true;
-		
 	}
 
 	if (checkColumns(currentPlayer)) {
 		return true;
-		
+	}
+	if (checkDiagonals(currentPlayer)) {
+		return true;
 	}
 };
 
