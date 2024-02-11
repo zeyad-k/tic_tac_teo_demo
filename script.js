@@ -18,7 +18,35 @@ const getCellPlacement = (index,numberOfRows)=>{
 	return [row,col]
 }
 
-const checkWin = () => true;
+const checkColumns = () => false;
+const checkRows = (currentPlayer) => {
+	let column = 0;
+
+	for (let row = 0; row < NUMBER_OF_ROWS; row++) {
+ 		while (column < NUMBER_OF_ROWS) {
+			if (board[row][column] !== currentPlayer) {
+				column = 0;
+				break;
+			}
+			column++;
+		}
+
+		if (column === NUMBER_OF_ROWS) {
+			return true;
+			
+		}
+
+	}
+};
+const checkDiagonals = () => false;
+const checkReverseDiagonals = () => false;
+
+const checkWin = (currentPlayer) => {
+	if (checkRows(currentPlayer)) {
+		return true;
+		
+	}
+};
 
 const resetBoard = () => {
 	 document.querySelector(".board").remove();
@@ -67,7 +95,7 @@ if (board[row][col] === "_"){
  	
 	drawMarkInCell(cell,currentPlayer);
 
-	if (checkWin()) {
+	if (checkWin(currentPlayer)) {
 		runWinEvent(currentPlayer);
 		
 	}else{
