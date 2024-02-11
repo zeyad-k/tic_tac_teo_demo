@@ -46,14 +46,12 @@ if (board[row][col] === "_"){
 		runWinEvent();
 		
 	}else{
-		if (turnsCounter === turns) {
-			runDrawEvent();
-		}
+	 
 
 	 
 		  turnsCounter === turns && runDrawEvent();
 
-		//  currentPlayer = currentPlayer === "x" ? "o" : "x";
+		 currentPlayer = currentPlayer === "x" ? "o" : "x";
 
 	}
 }
