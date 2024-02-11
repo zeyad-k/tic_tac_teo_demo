@@ -18,7 +18,26 @@ const getCellPlacement = (index,numberOfRows)=>{
 	return [row,col]
 }
 
-const checkColumns = () => false;
+const checkColumns = (currentPlayer) => {
+	let row = 0;
+
+	for (let column = 0; column < NUMBER_OF_ROWS; column++) {
+ 		while (row < NUMBER_OF_ROWS) {
+			if (board[row][column] !== currentPlayer) {
+				row = 0;
+				break;
+			}
+			row++;
+		}
+
+		if (row === NUMBER_OF_ROWS) {
+			return true;
+			
+		}
+	}
+	
+};
+
 const checkRows = (currentPlayer) => {
 	let column = 0;
 
@@ -35,7 +54,6 @@ const checkRows = (currentPlayer) => {
 			return true;
 			
 		}
-
 	}
 };
 const checkDiagonals = () => false;
@@ -43,6 +61,11 @@ const checkReverseDiagonals = () => false;
 
 const checkWin = (currentPlayer) => {
 	if (checkRows(currentPlayer)) {
+		return true;
+		
+	}
+
+	if (checkColumns(currentPlayer)) {
 		return true;
 		
 	}
