@@ -18,9 +18,16 @@ const getCellPlacement = (index,numberOfRows)=>{
 
 const checkWin = () => false;
 
+const resetBoard = () => false;
+
 const runWinEvent = () => false;
 
-const runDrawEvent = () => false;
+const runDrawEvent = () => {
+	setTimeout(()=>{
+		alert('Draw!');
+		resetBoard();
+	},100)
+};
 
 const drawMarkInCell = (cell,currentPlayer) =>{
 	cell.querySelector('.value').textContent = currentPlayer;
