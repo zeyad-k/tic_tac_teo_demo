@@ -3,11 +3,18 @@ const NUMBER_OF_ROWS = 3;
 const turns = NUMBER_OF_ROWS ** 2;
 let turnsCounter = 0; 
 
-let board = [
-	["_","_","_"],
-	["_","_","_"],
-	["_","_","_"],
- ];
+// let board = [
+// 	["_","_","_"],
+// 	["_","_","_"],
+// 	["_","_","_"],
+//  ];
+const createBoardArray = () =>{
+	let board = [];
+	for (let row = 0; row < NUMBER_OF_ROWS; row++) {
+		board.push(Array.from({ length:NUMBER_OF_ROWS }, () => "_"));
+	}
+	return board;
+}
 
 const resetButton = document.querySelector('#reset');
 
