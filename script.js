@@ -4,10 +4,10 @@ const turns = NUMBER_OF_ROWS ** 2;
 let turnsCounter = 0; 
 
 let board = [
-	["_"],["_"],["_"],
-	["_"],["_"],["_"],
-	["_"],["_"],["_"],
-]
+	["_","_","_"],
+	["_","_","_"],
+	["_","_","_"],
+ ];
 
 const getCellPlacement = (index,numberOfRows)=>{
 	const row = Math.floor(index / numberOfRows);
@@ -22,7 +22,14 @@ const runWinEvent = () => false;
 
 const runDrawEvent = () => false;
 
+const drawMarkInCell = (cell,currentPlayer) =>{
+	cell.querySelector('.value').textContent = currentPlayer;
+	cell.classList.add(`cell--${currentPlayer}`);
+
+}
+
 const cellClickHandler =(event,index) =>{
+	debugger;
 const cell = event.target;
 
 const [row,col] = getCellPlacement(index,NUMBER_OF_ROWS);
@@ -33,13 +40,20 @@ if (board[row][col] === "_"){
 	cell.querySelector(".value").textContent = currentPlayer;
 	cell.classList.add(`cell--${currentPlayer}`);
 	
+	// drawMarkInCell(cell,currentPlayer);
+
 	if (checkWin()) {
-		runWinEvent;
+		runWinEvent();
 		
 	}else{
-		 if (turnsCounter === turns) runDrawEvent();
+		if (turnsCounter === turns) {
+			runDrawEvent();
+		}
 
-		 currentPlayer = currentPlayer === "x" ? "o" : "x";
+	 
+		  turnsCounter === turns && runDrawEvent();
+
+		//  currentPlayer = currentPlayer === "x" ? "o" : "x";
 
 	}
 }
