@@ -18,7 +18,7 @@ const getCellPlacement = (index,numberOfRows)=>{
 	return [row,col]
 }
 
-const checkWin = () => false;
+const checkWin = () => true;
 
 const resetBoard = () => {
 	 document.querySelector(".board").remove();
@@ -35,7 +35,13 @@ const resetBoard = () => {
 
 };
 
-const runWinEvent = () => false;
+const runWinEvent = (currentPlayer) => {
+	setTimeout(()=>{
+		alert(`${currentPlayer} is the winner 😎`);
+		resetBoard();
+	},100)
+
+};
 
 const runDrawEvent = () => {
 	setTimeout(()=>{
@@ -62,7 +68,7 @@ if (board[row][col] === "_"){
 	drawMarkInCell(cell,currentPlayer);
 
 	if (checkWin()) {
-		runWinEvent();
+		runWinEvent(currentPlayer);
 		
 	}else{
 	 
