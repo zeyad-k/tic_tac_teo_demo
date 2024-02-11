@@ -3,6 +3,12 @@ const NUMBER_OF_ROWS = 3;
 const turns = NUMBER_OF_ROWS ** 2;
 let turnsCounter = 0; 
 
+let board = [
+	["_"],["_"],["_"],
+	["_"],["_"],["_"],
+	["_"],["_"],["_"],
+]
+
 const getCellPlacement = (index,numberOfRows)=>{
 	const row = Math.floor(index / numberOfRows);
 	const col = index % numberOfRows;
@@ -10,12 +16,33 @@ const getCellPlacement = (index,numberOfRows)=>{
 	return [row,col]
 }
 
+const checkWin = () => false;
+
+const runWinEvent = () => false;
+
+const runDrawEvent = () => false;
+
 const cellClickHandler =(event,index) =>{
 const cell = event.target;
 
-const placement = getCellPlacement(index,NUMBER_OF_ROWS);
+const [row,col] = getCellPlacement(index,NUMBER_OF_ROWS);
 
-console.log({placement});
+if (board[row][col] === "_"){
+	turnsCounter++;
+	board[row][col] = currentPlayer;
+	cell.querySelector(".value").textContent = currentPlayer;
+	cell.classList.add(`cell--${currentPlayer}`);
+	
+	if (checkWin()) {
+		runWinEvent;
+		
+	}else{
+		 if (turnsCounter === turns) runDrawEvent();
+
+		 currentPlayer = currentPlayer === "x" ? "o" : "x";
+
+	}
+}
  }
 
 const createBoard = ()=>{
