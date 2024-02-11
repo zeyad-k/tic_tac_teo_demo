@@ -15,6 +15,7 @@ const createBoard = ()=>{
 		
 		cellElement.querySelector(".cell").onclick = (event) =>console.log("youclickedme");
 		board.appendChild(cellElement);
+		document.documentElement.style.setProperty("--grid-rows",NUMBER_OF_ROWS);
 	}
 container.insertAdjacentElement('afterbegin',board);
 }
