@@ -1,4 +1,4 @@
-let currentPlayer = 'x';
+let currentPlayer = 'X';
 const NUMBER_OF_ROWS = 3;
 const turns = NUMBER_OF_ROWS ** 2;
 let turnsCounter = 0; 
@@ -29,8 +29,7 @@ const drawMarkInCell = (cell,currentPlayer) =>{
 }
 
 const cellClickHandler =(event,index) =>{
-	debugger;
-const cell = event.target;
+ const cell = event.target;
 
 const [row,col] = getCellPlacement(index,NUMBER_OF_ROWS);
 
@@ -45,11 +44,9 @@ if (board[row][col] === "_"){
 		
 	}else{
 	 
-
-	 
 		  turnsCounter === turns && runDrawEvent();
 
-		 currentPlayer = currentPlayer === "x" ? "o" : "x";
+		 currentPlayer = currentPlayer === "X" ? "O" : "X";
 
 	}
 }
