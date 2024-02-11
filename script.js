@@ -18,7 +18,20 @@ const getCellPlacement = (index,numberOfRows)=>{
 
 const checkWin = () => false;
 
-const resetBoard = () => false;
+const resetBoard = () => {
+	 document.querySelector(".board");
+	 createBoard()
+
+	 board = [
+		["_","_","_"],
+		["_","_","_"],
+		["_","_","_"],
+	 ];
+
+	 currentPlayer = 'X';
+	 turnsCounter = 0;
+
+};
 
 const runWinEvent = () => false;
 
