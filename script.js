@@ -15,6 +15,7 @@ const createBoardArray = () =>{
 	}
 	return board;
 }
+let board = createBoardArray();
 
 const resetButton = document.querySelector('#reset');
 
