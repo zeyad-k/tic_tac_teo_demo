@@ -19,7 +19,7 @@ const getCellPlacement = (index,numberOfRows)=>{
 const checkWin = () => false;
 
 const resetBoard = () => {
-	 document.querySelector(".board");
+	 document.querySelector(".board").remove();
 	 createBoard()
 
 	 board = [
