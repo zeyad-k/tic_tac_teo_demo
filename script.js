@@ -56,7 +56,7 @@ const checkRows = (currentPlayer) => {
 	}
 };
 
-const checkDiagonals = () => {
+const checkDiagonals = (currentPlayer) => {
 	let count = 0;
 
   		while (count < NUMBER_OF_ROWS) {
@@ -72,7 +72,23 @@ const checkDiagonals = () => {
 			
 		}
 };
-const checkReverseDiagonals = () => false;
+const checkReverseDiagonals = (currentPlayer) => {
+	let count = 0;
+
+	while (count < NUMBER_OF_ROWS) {
+	  if (board[count][NUMBER_OF_ROWS-1-count] !== currentPlayer) {
+		  count = 0;
+		  break;
+	  }
+	  count++;
+  }
+
+  if (count === NUMBER_OF_ROWS) {
+	  return true;
+	  
+  }
+
+};
 
 const checkWin = (currentPlayer) => {
 	if (checkRows(currentPlayer)) {
@@ -83,6 +99,9 @@ const checkWin = (currentPlayer) => {
 		return true;
 	}
 	if (checkDiagonals(currentPlayer)) {
+		return true;
+	}
+	if (checkReverseDiagonals(currentPlayer)) {
 		return true;
 	}
 };
